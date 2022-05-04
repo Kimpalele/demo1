@@ -6,6 +6,7 @@ import com.example.demo.models.Response;
 import com.example.demo.repo.KompisDao;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -52,7 +53,7 @@ public class KompisController {
 
     @DeleteMapping("kompis/del/{id}")
     public Response deleteKompisById(@PathVariable("id") int id){
-        Response res = new Response("Error deleting book..", Boolean.FALSE);
+        Response res = new Response("Error deleting kompis..", Boolean.FALSE);
 
         int removeIndex = -1;
         for (int i = 0; i < kompisar.size(); i++){
@@ -63,11 +64,10 @@ public class KompisController {
 
         if (removeIndex != -1){
             kompisar.remove(removeIndex);
-            res.setMessage("Book successfully removed!");
+            res.setMessage("Kompis successfully removed!");
             res.setStatus(Boolean.TRUE);
         }
         return res;
     }
-
 
 }
