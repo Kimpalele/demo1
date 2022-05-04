@@ -1,6 +1,5 @@
 package com.example.demo.repo;
 
-import com.example.demo.models.BookLombok;
 import com.example.demo.models.KompisLombok;
 
 import java.util.ArrayList;
