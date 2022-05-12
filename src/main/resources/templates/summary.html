@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Summary</title>
+    <style>
+        table{text-align: center}
+    </style>
+</head>
+<body>
+<h1>
+    Greenhouse Statistics Summary:
+</h1>
+
+<table>
+    <tr>
+        <th>
+            Date |
+        </th>
+        <th>
+            | Morning Temp C |
+        </th>
+        <th>
+            | Morning Humidity % |
+        </th>
+        <th>
+            | Noon Temp C |
+        </th>
+        <th>
+            | Noon Humidity % |
+        </th>
+        <th>
+            | Dusk Temp C |
+        </th>
+        <th>
+            | Dusk Humidity % |
+        </th>
+        <th>
+            | Electricity Cost
+        </th>
+    </tr>
+    <tr th:each="Summary : ${Summary}">
+        <td th:text="${Summary.getDate}"></td>
+        <td th:text="${Summary.getMorningT}"></td>
+        <td th:text="${Summary.getMorningH}"></td>
+        <td th:text="${Summary.getNoonT}"></td>
+        <td th:text="${Summary.getNoonH}"></td>
+        <td th:text="${Summary.getDuskT}"></td>
+        <td th:text="${Summary.getDuskH}"></td>
+        <td th:text="${Summary.getCost}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

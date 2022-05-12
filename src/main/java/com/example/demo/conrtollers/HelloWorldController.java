@@ -12,19 +12,6 @@ public class HelloWorldController {
 
     List<String> animals = new ArrayList<>(Arrays.asList("Lion", "Bear", "Pig", "Fish", "Horse", "Elephant", "Mole"));
 
-    int min = 0;
-    int max = 6;
-
-    /*@RequestMapping("/")
-    public String helloWorld(){
-        return "Hello World!";
-    }*/
-
-    @GetMapping(path = "/")
-    public String helloWorld(){
-        return "index.html";
-    }
-
     @RequestMapping("/esp")
     public String esp(){
         return "Hola Mundo!";

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Temperature</title>
+    <style>
+        table{text-align: center}
+    </style>
+</head>
+<body>
+<h1>
+    Temperature Statistics:
+</h1>
+<h4>
+    Values are degrees in Celsius
+</h4>
+
+<table>
+    <tr>
+        <th>
+            Date |
+        </th>
+        <th>
+            | Morning |
+        </th>
+        <th>
+            | Noon |
+        </th>
+        <th>
+            | Dusk
+        </th>
+    </tr>
+    <tr th:each="Temperature : ${Temperature_List}">
+        <td th:text="${Temperature.getDate}"></td>
+        <td th:text="${Temperature.getMorning}"></td>
+        <td th:text="${Temperature.getNoon}"></td>
+        <td th:text="${Temperature.getDusk}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

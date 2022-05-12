@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Humidity</title>
+    <style>
+        table{text-align: center}
+    </style>
+</head>
+<body>
+<h1>
+    Humidity Statistics:
+</h1>
+<h4>
+    Values are set at 'x'%
+</h4>
+
+<table>
+    <tr>
+        <th>
+            Date |
+        </th>
+        <th>
+            | Morning |
+        </th>
+        <th>
+            | Noon |
+        </th>
+        <th>
+            | Dusk
+        </th>
+    </tr>
+    <tr th:each="Humidity : ${Humidity_List}">
+        <td th:text="${Humidity.getDate}"></td>
+        <td th:text="${Humidity.getMorning}"></td>
+        <td th:text="${Humidity.getNoon}"></td>
+        <td th:text="${Humidity.getDusk}"></td>
+    </tr>
+</table>
+
+</body>
+</html>

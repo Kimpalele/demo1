@@ -1,15 +1,10 @@
 package com.example.demo.conrtollers;
 
-import com.example.demo.models.Kompis;
-import com.example.demo.models.Response;
-import com.example.demo.repo.KompisDao;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class KompisController {
-
+    /*
     KompisDao kd = new KompisDao();
     List<Kompis> kompisar = kd.getList();
 
@@ -66,6 +61,6 @@ public class KompisController {
             res.setStatus(Boolean.TRUE);
         }
         return res;
-    }
+    }*/
 
 }
