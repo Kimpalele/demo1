@@ -1,29 +1,27 @@
 package com.example.demo.conrtollers;
 
 import com.example.demo.models.Kompis;
-import com.example.demo.models.KompisLombok;
 import com.example.demo.models.Response;
 import com.example.demo.repo.KompisDao;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
 public class KompisController {
 
     KompisDao kd = new KompisDao();
-    List<KompisLombok> kompisar = kd.getList();
+    List<Kompis> kompisar = kd.getList();
 
     @RequestMapping("/kompis")
-    public List<KompisLombok> getAllKompisar(){
+    public List<Kompis> getAllKompisar(){
         return kompisar;
     }
 
     @RequestMapping("/kompis/{id}")
-    public KompisLombok getKompisById(@PathVariable int id){
-        KompisLombok temp = new KompisLombok();
-        for (KompisLombok k : kompisar){
+    public Kompis getKompisById(@PathVariable int id){
+        Kompis temp = new Kompis();
+        for (Kompis k : kompisar){
             if (k.getId() == id){
                 temp = k;
             }
@@ -32,9 +30,9 @@ public class KompisController {
     }
 
     @RequestMapping("/kompis/name/{name}")
-    public KompisLombok getKompisByName(@PathVariable String name){
-        KompisLombok temp = new KompisLombok();
-        for (KompisLombok k : kompisar){
+    public Kompis getKompisByName(@PathVariable String name){
+        Kompis temp = new Kompis();
+        for (Kompis k : kompisar){
             if (k.getName().equalsIgnoreCase(name)){
                 temp = k;
             }
@@ -43,7 +41,7 @@ public class KompisController {
     }
 
     @PostMapping("/kompis/add")
-    public Response addKompis(@RequestBody KompisLombok k){
+    public Response addKompis(@RequestBody Kompis k){
         System.out.println(k.getName() + " " + k.getAdress() + " " + k.getPhoneNumber() + " " + k.getId());
         Response res = new Response("Kompis added",Boolean.FALSE);
         kompisar.add(k);

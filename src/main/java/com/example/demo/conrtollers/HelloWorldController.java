@@ -1,16 +1,11 @@
 package com.example.demo.conrtollers;
 
 
-import com.example.demo.models.Kompis;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 @RestController
 public class HelloWorldController {
@@ -20,9 +15,14 @@ public class HelloWorldController {
     int min = 0;
     int max = 6;
 
-    @RequestMapping("/")
+    /*@RequestMapping("/")
     public String helloWorld(){
         return "Hello World!";
+    }*/
+
+    @GetMapping(path = "/")
+    public String helloWorld(){
+        return "index.html";
     }
 
     @RequestMapping("/esp")
@@ -40,8 +40,7 @@ public class HelloWorldController {
     }
 
     public String randNum(){
-        String s = String.valueOf((int) (Math.random() * 100));
-        return s;
+        return String.valueOf((int) (Math.random() * 100));
     }
 
     @RequestMapping("/random")
