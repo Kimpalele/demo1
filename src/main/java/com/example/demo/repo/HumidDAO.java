@@ -12,7 +12,15 @@ import java.util.Properties;
 public class HumidDAO {
 
     List<Humid> humidList = new ArrayList<>();
-    public HumidDAO() throws IOException {
+
+    public HumidDAO(){}
+
+    public List<Humid> getList(){
+        return humidList;
+    }
+
+    public List<Humid> updateList() throws IOException{
+        humidList.clear();
         Properties p = new Properties();
         p.load(new FileInputStream("src/main/resources/Settings.properties"));
 
@@ -29,14 +37,12 @@ public class HumidDAO {
                 int noon = rs.getInt("noonH");
                 int dusk = rs.getInt("duskH");
 
-                Humid h1 = new Humid(date, morning, noon, dusk);
-                humidList.add(h1);
+                humidList.add(new Humid(date,morning,noon,dusk));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public List<Humid> getList(){
         return humidList;
     }
+
 }

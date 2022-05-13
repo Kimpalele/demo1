@@ -1,7 +1,6 @@
 package com.example.demo.repo;
 
 import com.example.demo.models.Summary;
-import com.example.demo.models.Temp;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +11,14 @@ import java.util.Properties;
 
 public class SummaryDAO {
     List<Summary> sumList = new ArrayList<>();
-    public SummaryDAO() throws IOException {
+    public SummaryDAO(){}
+
+    public List<Summary> getList(){
+        return sumList;
+    }
+
+    public List<Summary> updateList() throws IOException {
+        sumList.clear();
         Properties p = new Properties();
         p.load(new FileInputStream("src/main/resources/Settings.properties"));
 
@@ -21,9 +27,10 @@ public class SummaryDAO {
                 p.getProperty("name"),
                 p.getProperty("password"));
             Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from temp inner join humid on humid.date = temp.date inner join elecost on elecost.date = temp.date")){
+            ResultSet rs = stmt.executeQuery("select * from elecost left join humid on humid.date = elecost.date left join temp on temp.date = elecost.date")){
 
             while (rs.next()){
+                int cost = rs.getInt("cost");
                 String date = rs.getString("date");
                 int morningT = rs.getInt("morningT");
                 int noonT = rs.getInt("noonT");
@@ -31,16 +38,13 @@ public class SummaryDAO {
                 int morningH = rs.getInt("morningH");
                 int noonH = rs.getInt("noonH");
                 int duskH = rs.getInt("duskH");
-                int cost = rs.getInt("cost");
 
-                Summary s1 = new Summary(date, morningT, morningH, noonT, noonH, duskT, duskH, cost);
-                sumList.add(s1);
+
+                sumList.add(new Summary(date, morningT, morningH, noonT, noonH, duskT, duskH, cost));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public List<Summary> getList(){
         return sumList;
     }
 

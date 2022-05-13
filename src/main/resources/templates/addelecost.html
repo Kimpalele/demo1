@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Electricity adder</title>
+    <style>
+        table{text-align: center}
+    </style>
+</head>
+<body>
+<form th:action="@{/electricity/savecost}" th:object="${elecost}" method="POST">
+
+    <input type="text" th:field="*{date}" placeholder="Enter date xxxx-xx-xx"/>
+
+    <input type="text" th:field="*{cost}" placeholder="Enter cost" />
+
+    <button type="submit">Save</button>
+
+</form>
+</body>
+</html>

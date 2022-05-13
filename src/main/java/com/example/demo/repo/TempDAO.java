@@ -13,7 +13,15 @@ public class TempDAO {
 
 
     List<Temp> tempList = new ArrayList<>();
-    public TempDAO() throws IOException {
+
+    public TempDAO() {}
+
+    public List<Temp> getList(){
+        return tempList;
+    }
+
+    public List<Temp> updateList() throws IOException{
+        tempList.clear();
         Properties p = new Properties();
         p.load(new FileInputStream("src/main/resources/Settings.properties"));
 
@@ -30,15 +38,11 @@ public class TempDAO {
                 int noon = rs.getInt("noonT");
                 int dusk = rs.getInt("duskT");
 
-                Temp t1 = new Temp(date,morning, noon, dusk);
-                tempList.add(t1);
+                tempList.add(new Temp(date,morning,noon,dusk));
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
-    public List<Temp> getList(){
         return tempList;
     }
-
 }
