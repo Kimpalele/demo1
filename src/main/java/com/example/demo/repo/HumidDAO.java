@@ -15,10 +15,8 @@ public class HumidDAO {
 
     public HumidDAO(){}
 
-    public List<Humid> getList(){
-        return humidList;
-    }
-
+    //Connects to the database and fetches the correct data
+    //and then returns a new updated list of objects.
     public List<Humid> updateList() throws IOException{
         humidList.clear();
         Properties p = new Properties();

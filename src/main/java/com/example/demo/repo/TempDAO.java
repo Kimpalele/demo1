@@ -16,10 +16,8 @@ public class TempDAO {
 
     public TempDAO() {}
 
-    public List<Temp> getList(){
-        return tempList;
-    }
-
+    //Connects to the database and fetches the correct data
+    //and then returns a new updated list of objects.
     public List<Temp> updateList() throws IOException{
         tempList.clear();
         Properties p = new Properties();

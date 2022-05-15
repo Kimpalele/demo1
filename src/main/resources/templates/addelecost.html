@@ -12,7 +12,7 @@
 
     <input type="text" th:field="*{date}" placeholder="Enter date xxxx-xx-xx"/>
 
-    <input type="text" th:field="*{cost}" placeholder="Enter cost" />
+    <input type="number" th:field="*{cost}" placeholder="Enter cost in numbers" step="0.01" min="0" />
 
     <button type="submit">Save</button>
 

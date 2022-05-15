@@ -13,10 +13,8 @@ public class SummaryDAO {
     List<Summary> sumList = new ArrayList<>();
     public SummaryDAO(){}
 
-    public List<Summary> getList(){
-        return sumList;
-    }
-
+    //Connects to the database and fetches the correct data
+    //and then returns a new updated list of objects.
     public List<Summary> updateList() throws IOException {
         sumList.clear();
         Properties p = new Properties();
